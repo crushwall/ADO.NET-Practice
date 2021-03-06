@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADONET", "ADONET\ADONET.csproj", "{88590536-253D-43FD-9E0F-BEB33124DDB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shapes", "Cube\Shapes.csproj", "{7E86E0E3-F842-4461-8E20-F5527FC31A97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88590536-253D-43FD-9E0F-BEB33124DDB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88590536-253D-43FD-9E0F-BEB33124DDB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88590536-253D-43FD-9E0F-BEB33124DDB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88590536-253D-43FD-9E0F-BEB33124DDB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E86E0E3-F842-4461-8E20-F5527FC31A97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E86E0E3-F842-4461-8E20-F5527FC31A97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E86E0E3-F842-4461-8E20-F5527FC31A97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E86E0E3-F842-4461-8E20-F5527FC31A97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {496E3B73-75E8-4A03-9E21-36B0454FCC3F}
+	EndGlobalSection
+EndGlobal
