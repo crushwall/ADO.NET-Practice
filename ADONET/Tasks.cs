@@ -37,6 +37,12 @@ namespace ADONET
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Failed.");
                 Console.ForegroundColor = ConsoleColor.Gray;
+
+
+                foreach (ValidationFailure failure in results.Errors)
+                {
+                    Console.WriteLine(failure.ErrorMessage);
+                }
             }
 
             Console.WriteLine($"\tSquare: {cube.Square}\n\tVolume: {cube.Volume}\n");
@@ -62,6 +68,12 @@ namespace ADONET
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Failed.");
                 Console.ForegroundColor = ConsoleColor.Gray;
+
+
+                foreach (ValidationFailure failure in results.Errors)
+                {
+                    Console.WriteLine(failure.ErrorMessage);
+                }
             }
 
             Console.WriteLine($"\tSquare: {cube.Square}\n\tVolume: {cube.Volume}\n");
@@ -121,6 +133,11 @@ namespace ADONET
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Failed.");
                 Console.ForegroundColor = ConsoleColor.Gray;
+
+                foreach (ValidationFailure failure in results.Errors)
+                {
+                    Console.WriteLine(failure.ErrorMessage);
+                }
             }
 
             Console.WriteLine($"\tSquare: {cube.Square}\n\tVolume: {cube.Volume}");
