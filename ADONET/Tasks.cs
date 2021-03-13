@@ -141,7 +141,7 @@ namespace ADONET
             }
 
             Console.WriteLine($"\tSquare: {cube.Square}\n\tVolume: {cube.Volume}");
-            Console.WriteLine($"points:\n{cube}\n");
+            Console.WriteLine($"points:\n{cube}");
 
             ////////////////////////
             ///// INCORRECT DATA ///
