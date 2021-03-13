@@ -1,4 +1,6 @@
-﻿using CubeExceptions;
+﻿using System;
+using CubeExceptions;
+using System.Collections.Generic;
 
 namespace Shapes
 {
@@ -6,6 +8,21 @@ namespace Shapes
     {
         private double _sideLength;
         private Point[] _points;
+
+        private bool ValidateSameEdge(Point p1, Point p2)
+        {
+            if (p1.X == p2.X && (p1.Y == p2.Y || p1.Z == p2.Z) ||
+                p1.Y == p2.Y && p1.Z == p2.Z)
+            {
+                if (p1.Distance(p2) != _sideLength)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         public double SideLength
         {
             get { return _sideLength; }
@@ -23,7 +40,7 @@ namespace Shapes
                 else
                 {
                     _points = new Point[8];
-                    _sideLength = _points[0].Distance(_points[1]);
+                    _sideLength = value[0].Distance(value[1]);
 
                     if (value.Length == 4)
                     {
@@ -46,7 +63,7 @@ namespace Shapes
                     {
                         for (int i = 0; i < 8; i++)
                         {
-                            if (_points[i].Distance(_points[i + 1]) != _sideLength)
+                            if (ValidateSameEdge(value[i], value[i + 1]))
                             {
                                 throw new WrongSideLengthException("Invalid points are set. The resulting shape is not a cube.");
                             }
@@ -123,7 +140,7 @@ namespace Shapes
             else
             {
                 _points = new Point[8];
-                _sideLength = _points[0].Distance(_points[1]);
+                _sideLength = points[0].Distance(points[1]);
 
                 if (points.Length == 4)
                 {
@@ -146,16 +163,21 @@ namespace Shapes
                 {
                     for (int i = 0; i < 8; i++)
                     {
-                        if (_points[i].Distance(_points[i + 1]) != _sideLength)
+                        if (ValidateSameEdge(points[i], points[i + 1]))
                         {
-                            throw new WrongSideLengthException("Invalid points are set. The resulting shape is not a cube.");
+                            _points[i] = points[i];
                         }
+                        else
+                        {
+                            throw new WrongSideLengthException($"Invalid points are set. The resulting shape is not a cube.\nSide Length: {_sideLength}, found: {points[i].Distance(points[i + 1])}");
 
-                        _points[i] = points[i];
+                        }
                     }
                 }
             }
         }
+
+        public Cube(List<Point> list) : this(list.ToArray()) { }
 
         public Cube(Point p1, Point p2, Point p3, Point p4) : this(new Point[] { p1, p2, p3, p4 }) { }
 
@@ -172,7 +194,7 @@ namespace Shapes
                 )
         { }
 
-        public Cube(Point p1, double _sideLength, bool abscissa, bool ordinate, bool applicata)
+        public Cube(Point p1, double _sideLength, bool abscissa = true, bool ordinate = true, bool applicata = true)
         {
             _points = new Point[8];
             this._sideLength = _sideLength;
@@ -200,7 +222,15 @@ namespace Shapes
 
             foreach (Point p in _points)
             {
-                s += $"{p.X} {p.Y} {p.Z}\n";
+                if (p == null)
+                {
+                    throw new NullReferenceException("No points found.");
+                }
+                else
+                {
+                    s += $"{p.X} {p.Y} {p.Z}\n";
+
+                }
             }
 
             return s;
