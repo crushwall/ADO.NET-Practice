@@ -22,8 +22,6 @@ namespace Shapes
                 _points = new Point[8];
                 _sideLength = value[0].Distance(value[1]);
 
-                ValidateEnteredPoints(value);
-
                 if (value.Length == 4)
                 {
                     for (int i = 0; i < 4; i++)
@@ -68,8 +66,6 @@ namespace Shapes
             _points = new Point[8];
             _sideLength = points[0].Distance(points[1]);
 
-            ValidateEnteredPoints(points);
-
             if (points.Length == 4)
             {
                 for (int i = 0; i < 4; i++)
@@ -88,7 +84,6 @@ namespace Shapes
                 {
                     _points[i] = points[i];
                 }
-
             }
         }
 
@@ -109,27 +104,26 @@ namespace Shapes
                 )
         { }
 
-        public Cube(Point p1, double _sideLength, bool abscissa = true, bool ordinate = true, bool applicata = true)
+        public Cube(Point p, double _sideLength, bool abscissa = true, bool ordinate = true, bool applicata = true)
         {
             _points = new Point[8];
             this._sideLength = _sideLength;
 
-            _points[0] = p1;
-            _points[1] = new Point(p1.X, p1.Y, applicata ? p1.Z + _sideLength : p1.Z - _sideLength);
-            _points[2] = new Point(abscissa? p1.X + _sideLength : p1.X - _sideLength, p1.Y,p1.Z);
-            _points[3] = new Point(p1.X, ordinate? p1.Y + _sideLength : p1.Y - _sideLength,p1.Z);
+            _points[0] = p;
+            _points[1] = new Point(p.X, p.Y, applicata ? p.Z + _sideLength : p.Z - _sideLength);
+            _points[2] = new Point(abscissa? p.X + _sideLength : p.X - _sideLength, p.Y,p.Z);
+            _points[3] = new Point(p.X, ordinate? p.Y + _sideLength : p.Y - _sideLength,p.Z);
 
-            _points[4] = new Point(abscissa ? p1.X + _sideLength : p1.X - _sideLength,
-                ordinate ? p1.Y + _sideLength : p1.Y - _sideLength,
-                applicata ? p1.Z + _sideLength : p1.Z - _sideLength);
-            _points[5] = new Point(p1.X, ordinate ? p1.Y + _sideLength : p1.Y - _sideLength,
-                applicata ? p1.Z + _sideLength : p1.Z - _sideLength);
-            _points[6] = new Point(abscissa ? p1.X + _sideLength : p1.X - _sideLength,
-                ordinate ? p1.Y + _sideLength : p1.Y - _sideLength, p1.Z);
-            _points[7] = new Point(abscissa ? p1.X + _sideLength : p1.X - _sideLength, p1.Y,
-                applicata ? p1.Z + _sideLength : p1.Z - _sideLength);
+            _points[4] = new Point(abscissa ? p.X + _sideLength : p.X - _sideLength,
+                ordinate ? p.Y + _sideLength : p.Y - _sideLength,
+                applicata ? p.Z + _sideLength : p.Z - _sideLength);
+            _points[5] = new Point(p.X, ordinate ? p.Y + _sideLength : p.Y - _sideLength,
+                applicata ? p.Z + _sideLength : p.Z - _sideLength);
+            _points[6] = new Point(abscissa ? p.X + _sideLength : p.X - _sideLength,
+                ordinate ? p.Y + _sideLength : p.Y - _sideLength, p.Z);
+            _points[7] = new Point(abscissa ? p.X + _sideLength : p.X - _sideLength, p.Y,
+                applicata ? p.Z + _sideLength : p.Z - _sideLength);
         }
-
 
         public override string ToString()
         {
@@ -144,49 +138,6 @@ namespace Shapes
             }
 
             return s;
-        }
-
-        private bool ValidateSameEdge(Point p1, Point p2)
-        {
-            if ((p1.X == p2.X && (p1.Y == p2.Y || p1.Z == p2.Z) ||
-                p1.Y == p2.Y && p1.Z == p2.Z) &&
-                p1.Distance(p2) != _sideLength)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        private void ValidateEnteredPoints(Point[] points)
-        {
-            if (points.Length != 4 && points.Length != 8)
-            {
-                throw new InvalidNumberOfPointsException("The cube is uniquely defined by four or eight points.");
-            }
-            else
-            {
-                for (int i = 0; i < points.Length - 1; i++)
-                {
-                    if (!ValidateSameEdge(points[i], points[i + 1]))
-                    {
-                        throw new WrongSideLengthException(
-                                    $"Invalid points are set." +
-                                    $"The resulting shape is not a cube." +
-                                    $"\nSide Length: {_sideLength}, found: {points[i].Distance(points[i + 1])}"
-                                    );
-                    }
-
-                    if (points.Length == 8 && !ValidateSameEdge(points[3], points[7]))
-                    {
-                        throw new WrongSideLengthException(
-                                    $"Invalid points are set." +
-                                    $"The resulting shape is not a cube." +
-                                    $"\nSide Length: {_sideLength}, found: {points[i].Distance(points[i + 1])}"
-                                    );
-                    }
-                }
-            }
         }
     }
 }
