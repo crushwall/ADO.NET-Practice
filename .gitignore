@@ -8,7 +8,6 @@
 *.user
 *.userosscache
 *.sln.docstates
-*.txt
 *.pdf
 *.docx
 *.zip
