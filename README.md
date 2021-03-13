@@ -3,7 +3,7 @@
 Structure:
 - ADONET
 	- Program - start point
-	- Tasks - all tasks static class
+	- Tasks - static class for all tasks
 - Cube
 	- Point
 	- Cube
