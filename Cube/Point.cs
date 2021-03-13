@@ -21,7 +21,7 @@ namespace Shapes
             Z = 0;
         }
 
-        public Point(double x, double y, double z)
+        public Point(double x = 0, double y = 0, double z = 0)
         {
             X = x;
             Y = y;

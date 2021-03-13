@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tasks.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -56,8 +57,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="input\8 points.txt" />
     <Content Include="output.txt" />
-    <Content Include="points.txt" />
+    <Content Include="input\4 points.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
