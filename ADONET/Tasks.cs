@@ -16,67 +16,11 @@ namespace ADONET
             const string input8PointsPath = "../../input/8 points.txt";
             const string input5PointsPath = "../../input/5 points.txt";
 
-            ////////////////////////
-            /// CUBE BY 4 POINTS ///
-            ////////////////////////
+            CreateCubeAndValidateIt(input4PointsPath);
 
-            Console.WriteLine("cube by 4 points:");
-            Cube cube = new Cube(GetPointsFromFile(input4PointsPath));
+            CreateCubeAndValidateIt(input8PointsPath);
 
-            var validator = new CubeValidator();
-            ValidationResult results = validator.Validate(cube);
-
-            if (results.IsValid)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Successfully validated.");
-                Console.ForegroundColor = ConsoleColor.Gray;
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Failed.");
-                Console.ForegroundColor = ConsoleColor.Gray;
-
-
-                foreach (ValidationFailure failure in results.Errors)
-                {
-                    Console.WriteLine(failure.ErrorMessage);
-                }
-            }
-
-            Console.WriteLine($"\tSquare: {cube.Square}\n\tVolume: {cube.Volume}\n");
-
-            ////////////////////////
-            /// CUBE BY 8 POINTS ///
-            ////////////////////////
-
-            Console.WriteLine("cube by 8 points:");
-            cube = new Cube(GetPointsFromFile(input8PointsPath));
-
-            validator = new CubeValidator();
-            results = validator.Validate(cube);
-
-            if (results.IsValid)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Successfully validated.");
-                Console.ForegroundColor = ConsoleColor.Gray;
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Failed.");
-                Console.ForegroundColor = ConsoleColor.Gray;
-
-
-                foreach (ValidationFailure failure in results.Errors)
-                {
-                    Console.WriteLine(failure.ErrorMessage);
-                }
-            }
-
-            Console.WriteLine($"\tSquare: {cube.Square}\n\tVolume: {cube.Volume}\n");
+            CreateCubeAndValidateIt(input5PointsPath);
 
             ///////////////////////////////////////
             /// CUBE BY 1 POINT AND SIDE LENGTH ///
@@ -117,56 +61,12 @@ namespace ADONET
                 correct = double.TryParse(Console.ReadLine(), out sideLength);
             }
 
-            cube = new Cube(new Point(p1, p2, p3), sideLength);
+            var cube = new Cube(new Point(p1, p2, p3), sideLength);
 
-            validator = new CubeValidator();
-            results = validator.Validate(cube);
-
-            if (results.IsValid)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Successfully validated.");
-                Console.ForegroundColor = ConsoleColor.Gray;
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Failed.");
-                Console.ForegroundColor = ConsoleColor.Gray;
-
-                foreach (ValidationFailure failure in results.Errors)
-                {
-                    Console.WriteLine(failure.ErrorMessage);
-                }
-            }
+            ValidateCube(cube);
 
             Console.WriteLine($"\tSquare: {cube.Square}\n\tVolume: {cube.Volume}");
             Console.WriteLine($"points:\n{cube}");
-
-            ////////////////////////
-            ///// INCORRECT DATA ///
-            ////////////////////////
-            
-            //Console.WriteLine("cube by 5 points:");
-            //cube = new Cube(GetPointsFromFile(input5PointsPath));
-
-            //validator = new CubeValidator();
-            //results = validator.Validate(cube);
-
-            //if (results.IsValid)
-            //{
-            //    Console.ForegroundColor = ConsoleColor.Green;
-            //    Console.WriteLine("Successfully validated.");
-            //    Console.ForegroundColor = ConsoleColor.Gray;
-            //}
-            //else
-            //{
-            //    Console.ForegroundColor = ConsoleColor.Red;
-            //    Console.WriteLine("Failed.");
-            //    Console.ForegroundColor = ConsoleColor.Gray;
-            //}
-
-            //Console.WriteLine($"\tSquare: {cube.Square}\n\tVolume: {cube.Volume}\n");
         }
 
         static private Point[] GetPointsFromFile(string path)
@@ -209,6 +109,43 @@ namespace ADONET
             }
 
             return points.ToArray();
+        }
+
+        static private void CreateCubeAndValidateIt(string path)
+        {
+            Point[] points = GetPointsFromFile(path);
+
+            Console.WriteLine($"cube by {points.Length} points:");
+            Cube cube = new Cube(points);
+
+            ValidateCube(cube);
+
+            Console.WriteLine($"\tSquare: {cube.Square}\n\tVolume: {cube.Volume}\n");
+        }
+
+        private static void ValidateCube(Cube cube)
+        {
+            var validator = new CubeValidator();
+            ValidationResult results = validator.Validate(cube);
+
+            if (results.IsValid)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Successfully validated.");
+                Console.ForegroundColor = ConsoleColor.Gray;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Failed.");
+                Console.ForegroundColor = ConsoleColor.Gray;
+
+
+                foreach (ValidationFailure failure in results.Errors)
+                {
+                    Console.WriteLine(failure.ErrorMessage);
+                }
+            }
         }
     }
 }

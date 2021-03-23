@@ -6,13 +6,12 @@ namespace Shapes
 {
     public class Cube
     {
+
         private double _sideLength;
         private Point[] _points;
 
-        public double SideLength
-        {
-            get => _sideLength;
-        }
+        public double SideLength => _sideLength;
+
         public Point[] Points
         {
             get => _points;
@@ -58,7 +57,7 @@ namespace Shapes
         public Cube()
         {
             _points = new Point[8];
-            _sideLength = 0;
+           
         }
 
         public Cube(Point[] points)
@@ -104,10 +103,10 @@ namespace Shapes
                 )
         { }
 
-        public Cube(Point p, double _sideLength, bool abscissa = true, bool ordinate = true, bool applicata = true)
+        public Cube(Point p, double sideLength, bool abscissa = true, bool ordinate = true, bool applicata = true)
         {
             _points = new Point[8];
-            this._sideLength = _sideLength;
+            _sideLength = sideLength;
 
             _points[0] = p;
             _points[1] = new Point(p.X, p.Y, applicata ? p.Z + _sideLength : p.Z - _sideLength);

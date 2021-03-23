@@ -8,7 +8,7 @@ namespace Shapes
         {
             RuleFor(c => c.Points)
                 .Must(BeRightNumberOfPoints).WithMessage("The cube is uniquely defined by four or eight points.")
-                .Must(BePointsRightDistance).WithMessage($"Invalid points are set. The resulting shape is not a cube.");
+                .Must(BePointsRightDistance).WithMessage("Invalid points are set. The resulting shape is not a cube.");
         }
 
         private bool BeRightNumberOfPoints(Point[] points)
@@ -39,7 +39,7 @@ namespace Shapes
                     return false;
                 }
 
-                if ((points.Length == 8 || points.Length ==4) && !IsRightDistance(points[3], points[7], sideLenght))
+                if ((points.Length == 8 || points.Length == 4) && !IsRightDistance(points[3], points[7], sideLenght))
                 {
                     return false;
                 }

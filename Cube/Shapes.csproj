@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cube.cs" />
+    <Compile Include="CubeLogic.cs" />
     <Compile Include="CubeValidator.cs" />
     <Compile Include="InvalidNumberOfPointsException.cs" />
     <Compile Include="Point.cs" />
