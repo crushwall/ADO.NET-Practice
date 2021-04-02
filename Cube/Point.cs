@@ -14,10 +14,9 @@ namespace Shapes
 
         public double Z { get; set; }
 
-        public Point()
-        {       }
+        public Point() { }
 
-        public Point(double x = 0, double y = 0, double z = 0)
+        public Point(double x, double y, double z)
         {
             X = x;
             Y = y;

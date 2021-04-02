@@ -6,28 +6,31 @@ using System.IO;
 
 namespace ADONET
 {
-    public static class Tasks
+    public static class Task1
     {
-        static string outputPath = "../../output.txt";
+        //static string outputPath = "../../output.txt";
 
-        public static void Task1()
+        public void Task1()
         {
             const string input4PointsPath = "../../input/4 points.txt";
             const string input8PointsPath = "../../input/8 points.txt";
             const string input5PointsPath = "../../input/5 points.txt";
 
-            CreateCubeAndValidateIt(input4PointsPath);
+            Console.WriteLine("Ex. 1");
+            CreateCube(input4PointsPath);
+            
+            Console.WriteLine($"{Environment.NewLine}Ex. 2");
+            CreateCube(input8PointsPath);
 
-            CreateCubeAndValidateIt(input8PointsPath);
-
-            CreateCubeAndValidateIt(input5PointsPath);
+            Console.WriteLine($"{Environment.NewLine}Ex. 3");
+            CreateCube(input5PointsPath);
 
             ///////////////////////////////////////
             /// CUBE BY 1 POINT AND SIDE LENGTH ///
             ///////////////////////////////////////
 
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("cube by 1 point and side length:");
+            Console.WriteLine($"{Environment.NewLine}cube by 1 point and side length:");
             Console.ForegroundColor = ConsoleColor.Gray;
 
             double p1 = 0;
@@ -53,20 +56,31 @@ namespace ADONET
             }
 
             double sideLength = 0;
+
             correct = false;
-            
             while (!correct)
             {
                 Console.Write("Enter side length: ");
                 correct = double.TryParse(Console.ReadLine(), out sideLength);
             }
 
-            var cube = new Cube(new Point(p1, p2, p3), sideLength);
+            CubeLogic cubeLogic = new CubeLogic();
+            Cube cube = new Cube();
 
-            ValidateCube(cube);
+            try
+            {
+                cubeLogic.CreateCubeFromOnePointAndsideLength(new Point(p1, p2, p3), sideLength);
+                cube = cubeLogic.GetCube();
 
-            Console.WriteLine($"\tSquare: {cube.Square}\n\tVolume: {cube.Volume}");
-            Console.WriteLine($"points:\n{cube}");
+                Console.WriteLine($"\tSquare: {cube.Square}\n\tVolume: {cube.Volume}\n");
+            }
+
+            catch (Exception e)
+            {
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine(e.Message);
+                Console.ForegroundColor = ConsoleColor.Gray;
+            }
         }
 
         static private Point[] GetPointsFromFile(string path)
@@ -99,40 +113,50 @@ namespace ADONET
 
                     points.Add(new Point(p1, p2, p3));
                 }
-
-                if (points.Count != 4 && points.Count != 8)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Incorrect input file points count.");
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                }
             }
 
             return points.ToArray();
         }
 
-        static private void CreateCubeAndValidateIt(string path)
+        static private void CreateCube(string path)
         {
             Point[] points = GetPointsFromFile(path);
+            bool check = ValidateCubePoints(points);
 
             Console.WriteLine($"cube by {points.Length} points:");
-            Cube cube = new Cube(points);
+            CubeLogic cubeLogic = new CubeLogic();
+            Cube cube;
 
-            ValidateCube(cube);
+            if (check)
+            {
+                try
+                {
+                    cubeLogic.CreateCubeFromPoints(points);
+                    cube = cubeLogic.GetCube();
 
-            Console.WriteLine($"\tSquare: {cube.Square}\n\tVolume: {cube.Volume}\n");
+                    Console.WriteLine($"\tSquare: {cube.Square}\n\tVolume: {cube.Volume}\n");
+                }
+
+                catch (Exception e)
+                {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine(e.Message);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                }
+            }
         }
 
-        private static void ValidateCube(Cube cube)
+        private static bool ValidateCubePoints(Point[] pounts)
         {
-            var validator = new CubeValidator();
-            ValidationResult results = validator.Validate(cube);
+            var validator = new CubePointsValidator();
+            ValidationResult results = validator.Validate(pounts);
 
             if (results.IsValid)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Successfully validated.");
+                Console.WriteLine("Cube points are successfully validated.");
                 Console.ForegroundColor = ConsoleColor.Gray;
+                return true;
             }
             else
             {
@@ -140,11 +164,12 @@ namespace ADONET
                 Console.WriteLine("Failed.");
                 Console.ForegroundColor = ConsoleColor.Gray;
 
-
                 foreach (ValidationFailure failure in results.Errors)
                 {
                     Console.WriteLine(failure.ErrorMessage);
                 }
+
+                return false;
             }
         }
     }

@@ -46,11 +46,11 @@
   <ItemGroup>
     <Compile Include="Cube.cs" />
     <Compile Include="CubeLogic.cs" />
-    <Compile Include="CubeValidator.cs" />
-    <Compile Include="InvalidNumberOfPointsException.cs" />
+    <Compile Include="CubeExceptions\InvalidNumberOfPointsException.cs" />
+    <Compile Include="CubePointsValidator.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WrongSideLengthException.cs" />
+    <Compile Include="CubeExceptions\WrongSideLengthException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
