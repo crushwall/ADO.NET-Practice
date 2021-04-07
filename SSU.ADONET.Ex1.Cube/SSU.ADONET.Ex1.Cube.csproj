@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{88590536-253D-43FD-9E0F-BEB33124DDB2}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>ADONET</RootNamespace>
-    <AssemblyName>ADONET</AssemblyName>
+    <ProjectGuid>{6EB7269E-FCA2-4773-9711-320BC86FAF81}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SSU.ADONET.Ex1.Cube</RootNamespace>
+    <AssemblyName>SSU.ADONET.Ex1.Cube</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -46,24 +44,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Cube.cs" />
+    <Compile Include="CubeExceptions\InvalidNumberOfPointsException.cs" />
+    <Compile Include="CubeExceptions\WrongSideLengthException.cs" />
+    <Compile Include="CubeFactory.cs" />
+    <Compile Include="CubePointsValidator.cs" />
+    <Compile Include="Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Task.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="README.md" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="input\5 points.txt" />
-    <Content Include="input\8 points.txt" />
-    <Content Include="output.txt" />
-    <Content Include="input\4 points.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SSU.ADONET.Ex1.Cube\SSU.ADONET.Ex1.Cube.csproj">
-      <Project>{6eb7269e-fca2-4773-9711-320bc86faf81}</Project>
-      <Name>SSU.ADONET.Ex1.Cube</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

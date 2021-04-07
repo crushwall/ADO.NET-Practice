@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Shapes
+namespace SSU.ADONET.Ex1.Cube
 {
     public class Cube
     {
@@ -42,7 +42,7 @@ namespace Shapes
             {
                 foreach (Point p in Points)
                 {
-                    s += $"{p.X} {p.Y} {p.Z}\n";
+                    s += $"{p.X} {p.Y} {p.Z}{Environment.NewLine}";
                 }
             }
 

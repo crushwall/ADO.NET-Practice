@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using CubeExceptions;
+﻿using SSU.ADONET.Ex1.Cube.CubeExceptions;
+using System.Collections.Generic;
 
-namespace Shapes
+namespace SSU.ADONET.Ex1.Cube
 {
-    public class CubeLogic
+    public class CubeFactory
     {
-        public void CreateCubeFromPoints(Point[] points)
+        public Cube CreateCubeFromPoints(Point[] points)
         {
             Validate(points);
 
@@ -34,14 +34,14 @@ namespace Shapes
             return new Cube(cubePoints);
         }
 
-        public void CreateCubeFrompoints(Point p1, Point p2, Point p3, Point p4)
+        public Cube CreateCubeFrompoints(Point p1, Point p2, Point p3, Point p4)
         {
-            CreateCubeFromPoints(new Point[] { p1, p2, p3, p4 });
+            return CreateCubeFromPoints(new Point[] { p1, p2, p3, p4 });
         }
 
-        public void CreateCubeFrompoints(Point p1, Point p2, Point p3, Point p4, Point p5, Point p6, Point p7, Point p8)
+        public Cube CreateCubeFrompoints(Point p1, Point p2, Point p3, Point p4, Point p5, Point p6, Point p7, Point p8)
         {
-            CreateCubeFromPoints(new Point[] { p1, p2, p3, p4, p5, p6, p7, p8 });
+            return CreateCubeFromPoints(new Point[] { p1, p2, p3, p4, p5, p6, p7, p8 });
         }
 
         public void CreateCubeFromOnepointsList(List<Point> list)
@@ -49,7 +49,7 @@ namespace Shapes
             CreateCubeFromPoints(list.ToArray());
         }
 
-        public void CreateCubeFromOnePointAndsideLength(Point p, double sideLength, bool abscissa = true, bool ordinate = true, bool applicata = true)
+        public Cube CreateCubeFromOnePointAndsideLength(Point p, double sideLength, bool abscissa = true, bool ordinate = true, bool applicata = true)
         {
             Point[] points = new Point[8];
 
@@ -68,27 +68,40 @@ namespace Shapes
             points[7] = new Point(abscissa ? p.X + sideLength : p.X - sideLength, p.Y,
                 applicata ? p.Z + sideLength : p.Z - sideLength);
 
-            CreateCubeFromPoints(points);
+            return CreateCubeFromPoints(points);
         }
 
-
-        public Cube GetCube()
-        {
-            return _cube;
-        }
 
         private bool IsRightDistanceBetweenPoints(Point p1, Point p2, double sideLenght)
         {
             var isWrong = ((p1.X == p2.X && (p1.Y == p2.Y || p1.Z == p2.Z) ||
                 p1.Y == p2.Y && p1.Z == p2.Z) &&
                 p1.Distance(p2) != sideLenght);
-            
+
             return !isWrong;
+        }
+
+        private bool IsSameEdge(Point p1, Point p2)
+        {
+            var same = ((p1.X == p2.X && (p1.Y == p2.Y || p1.Z == p2.Z) ||
+                p1.Y == p2.Y && p1.Z == p2.Z));
+
+            return same;
         }
 
         private double GetSideLength(Point[] points)
         {
+            double sideLength = 0;
 
+            int i = 0;
+            while (!IsSameEdge(points[i], points[i + 1]) && i < points.Length - 1)
+            {
+                i++;
+            }
+
+            sideLength = points[i].Distance(points[i + 1]); 
+
+            return sideLength;
         }
 
         private bool IsRightPoints(Point[] points)
@@ -112,7 +125,7 @@ namespace Shapes
         }
 
         private void Validate(Point[] points)
-        {            
+        {
             if (!IsRightPoints(points))
             {
                 throw new InvalidNumberOfPointsException("Invalid points are set. The resulting shape is not a cube.");

@@ -1,16 +1,13 @@
 ﻿using FluentValidation.Results;
-using Shapes;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace ADONET
+namespace SSU.ADONET.Ex1.Cube
 {
-    public static class Task1
+    public static class Task
     {
-        //static string outputPath = "../../output.txt";
-
-        public void Task1()
+        public static void Start()
         {
             const string input4PointsPath = "../../input/4 points.txt";
             const string input8PointsPath = "../../input/8 points.txt";
@@ -18,7 +15,7 @@ namespace ADONET
 
             Console.WriteLine("Ex. 1");
             CreateCube(input4PointsPath);
-            
+
             Console.WriteLine($"{Environment.NewLine}Ex. 2");
             CreateCube(input8PointsPath);
 
@@ -63,16 +60,16 @@ namespace ADONET
                 Console.Write("Enter side length: ");
                 correct = double.TryParse(Console.ReadLine(), out sideLength);
             }
+            sideLength = Math.Abs(sideLength);
 
-            CubeLogic cubeLogic = new CubeLogic();
+            CubeFactory cubeFactory = new CubeFactory();
             Cube cube = new Cube();
 
             try
             {
-                cubeLogic.CreateCubeFromOnePointAndsideLength(new Point(p1, p2, p3), sideLength);
-                cube = cubeLogic.GetCube();
+                cube = cubeFactory.CreateCubeFromOnePointAndsideLength(new Point(p1, p2, p3), sideLength);
 
-                Console.WriteLine($"\tSquare: {cube.Square}\n\tVolume: {cube.Volume}\n");
+                Console.WriteLine($"\tSquare: {cube.Square}{Environment.NewLine}\tVolume: {cube.Volume}{Environment.NewLine}");
             }
 
             catch (Exception e)
@@ -83,7 +80,7 @@ namespace ADONET
             }
         }
 
-        static private Point[] GetPointsFromFile(string path)
+        private static Point[] GetPointsFromFile(string path)
         {
             string[] tmpStr;
             List<Point> points = new List<Point>(4);
@@ -118,23 +115,22 @@ namespace ADONET
             return points.ToArray();
         }
 
-        static private void CreateCube(string path)
+        private static void CreateCube(string path)
         {
             Point[] points = GetPointsFromFile(path);
             bool check = ValidateCubePoints(points);
 
             Console.WriteLine($"cube by {points.Length} points:");
-            CubeLogic cubeLogic = new CubeLogic();
+            CubeFactory cubeFactory = new CubeFactory();
             Cube cube;
 
             if (check)
             {
                 try
                 {
-                    cubeLogic.CreateCubeFromPoints(points);
-                    cube = cubeLogic.GetCube();
+                    cube = cubeFactory.CreateCubeFromPoints(points);
 
-                    Console.WriteLine($"\tSquare: {cube.Square}\n\tVolume: {cube.Volume}\n");
+                    Console.WriteLine($"\tSquare: {cube.Square}{Environment.NewLine}\tVolume: {cube.Volume}{Environment.NewLine}");
                 }
 
                 catch (Exception e)

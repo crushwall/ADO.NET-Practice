@@ -5,13 +5,13 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADONET", "ADONET\ADONET.csproj", "{88590536-253D-43FD-9E0F-BEB33124DDB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shapes", "Cube\Shapes.csproj", "{7E86E0E3-F842-4461-8E20-F5527FC31A97}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{854263CB-DE92-4B3B-B938-8C40C99E117E}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSU.ADONET.Ex1.Cube", "SSU.ADONET.Ex1.Cube\SSU.ADONET.Ex1.Cube.csproj", "{6EB7269E-FCA2-4773-9711-320BC86FAF81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{88590536-253D-43FD-9E0F-BEB33124DDB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88590536-253D-43FD-9E0F-BEB33124DDB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88590536-253D-43FD-9E0F-BEB33124DDB2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7E86E0E3-F842-4461-8E20-F5527FC31A97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7E86E0E3-F842-4461-8E20-F5527FC31A97}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7E86E0E3-F842-4461-8E20-F5527FC31A97}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7E86E0E3-F842-4461-8E20-F5527FC31A97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EB7269E-FCA2-4773-9711-320BC86FAF81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EB7269E-FCA2-4773-9711-320BC86FAF81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EB7269E-FCA2-4773-9711-320BC86FAF81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EB7269E-FCA2-4773-9711-320BC86FAF81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

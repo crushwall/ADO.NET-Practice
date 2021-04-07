@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CubeExceptions
+namespace SSU.ADONET.Ex1.Cube.CubeExceptions
 {
     public class InvalidNumberOfPointsException : ApplicationException
     {

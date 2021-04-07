@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace CubeExceptions
+namespace SSU.ADONET.Ex1.Cube.CubeExceptions
 {
     public class WrongSideLengthException : ApplicationException
     {

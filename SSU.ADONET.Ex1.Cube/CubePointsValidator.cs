@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Shapes
+namespace SSU.ADONET.Ex1.Cube
 {
     public class CubePointsValidator : AbstractValidator<Point[]>
     {

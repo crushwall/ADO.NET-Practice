@@ -6,7 +6,7 @@ namespace ADONET
     {
         static void Main(string[] args)
         {
-            Tasks.Task1();
+            SSU.ADONET.Ex1.Cube.Task.Start();
 
             Console.ReadKey(true);
         }

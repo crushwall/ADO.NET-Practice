@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Cube")]
+[assembly: AssemblyTitle("SSU.ADONET.Ex2.Inheritance")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Cube")]
+[assembly: AssemblyProduct("SSU.ADONET.Ex2.Inheritance")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("7e86e0e3-f842-4461-8e20-f5527fc31a97")]
+[assembly: Guid("99170a7f-d8ea-40f4-aff7-c4e2f600a4f5")]
 
 // Version information for an assembly consists of the following four values:
 //
