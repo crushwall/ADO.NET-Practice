@@ -2,7 +2,7 @@
 
 namespace SSU.ADONET.Ex2.Inheritance.Subtask.Book
 {
-    class Book
+    public class Book
     {
         public string Title { get; set; }
 

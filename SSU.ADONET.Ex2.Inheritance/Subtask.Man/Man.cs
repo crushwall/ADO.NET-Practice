@@ -9,5 +9,15 @@
         public double Weight { get; set; }
 
         public double Height { get; set; }
+
+        public Man() { }
+
+        public Man(Man previousMan)
+        {
+            FirstName = previousMan.FirstName;
+            Age = previousMan.Age;
+            Weight = previousMan.Weight;
+            Height = previousMan.Height;
+        }
     }
 }
