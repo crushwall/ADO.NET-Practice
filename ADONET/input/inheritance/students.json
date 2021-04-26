@@ -1,0 +1,20 @@
+﻿[
+  {
+    "FirstName": "Simon",
+    "Birthday": "1999-04-19T00:00:00",
+    "Weight": 73.7,
+    "Height": 174,
+    "StartTrainingDate": "2018-09-01T00:00:00",
+    "CourseNumber": 4,
+    "GroupNumber": 412
+  },
+  {
+    "FirstName": "",
+    "Birthday": "1910-06-15T00:00:00",
+    "Weight": 10,
+    "Height": 1,
+    "StartTrainingDate": "1915-09-01T00:00:00",
+    "CourseNumber": 0,
+    "GroupNumber": 1
+  }
+]

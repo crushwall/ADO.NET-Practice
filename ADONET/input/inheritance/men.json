@@ -1,0 +1,14 @@
+﻿[
+	{
+		"FirstName": "John",
+		"Birthday": "1999-04-19T00:00:00",
+		"Weight": 73.7,
+		"Height": 174
+	},
+	{
+		"FirstName": "",
+		"Birthday": "1800-01-01T00:00:00",
+		"Weight": 10,
+		"Height": 1
+	}
+]

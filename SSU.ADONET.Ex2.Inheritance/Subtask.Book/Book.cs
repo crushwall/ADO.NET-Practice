@@ -13,5 +13,7 @@ namespace SSU.ADONET.Ex2.Inheritance.Subtask.Book
         public DateTime PublicationDate { get; set; }
 
         public DateTime WritingDate { get; set; }
+
+        public Author Author { get; set; }
     }
 }

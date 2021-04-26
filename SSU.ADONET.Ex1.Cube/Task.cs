@@ -9,9 +9,9 @@ namespace SSU.ADONET.Ex1.Cube
     {
         public static void Start()
         {
-            const string input4PointsPath = "../../input/4 points.txt";
-            const string input8PointsPath = "../../input/8 points.txt";
-            const string input5PointsPath = "../../input/5 points.txt";
+            const string input4PointsPath = "../../input/cube/4 points.txt";
+            const string input8PointsPath = "../../input/cube/8 points.txt";
+            const string input5PointsPath = "../../input/cube/5 points.txt";
 
             Console.WriteLine("Ex. 1");
             CreateCube(input4PointsPath);

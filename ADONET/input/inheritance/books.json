@@ -1,0 +1,26 @@
+﻿[
+	{
+		"Title": "Cabbages and Kings",
+		"PagesCount": 45,
+		"PublishingHouse": "Azbuka-Atticus Publishing Group",
+		"PublicationDate": "2014-01-01T00:00:00",
+		"WritingDate": "1904-01-01T00:00:00",
+		"Author": {
+			"FirstName": "O.",
+			"LastName": "Henry",
+			"Birthday": "1862-09-11T00:00:00"
+		}
+	},
+	{
+		"Title": "Lalala Book",
+		"PagesCount": 1000000,
+		"PublishingHouse": "Mystery",
+		"PublicationDate": "0001-01-01T00:00:00",
+		"WritingDate": "1000-01-01T00:00:00",
+		"Author": {
+			"FirstName": "Ruslan",
+			"LastName": "Gadzhimuradov",
+			"Birthday": "1999-03-11T00:00:00"
+		}
+	}
+]

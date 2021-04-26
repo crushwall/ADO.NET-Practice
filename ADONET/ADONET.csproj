@@ -54,16 +54,24 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="input\5 points.txt" />
-    <Content Include="input\8 points.txt" />
-    <Content Include="output.txt" />
-    <Content Include="input\4 points.txt" />
+    <Content Include="input\cube\5 points.txt" />
+    <Content Include="input\cube\8 points.txt" />
+    <None Include="input\inheritance\authors.json" />
+    <None Include="input\inheritance\books.json" />
+    <None Include="input\inheritance\men.json" />
+    <None Include="input\inheritance\students.json" />
+    <Content Include="input\cube\4 points.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SSU.ADONET.Ex1.Cube\SSU.ADONET.Ex1.Cube.csproj">
       <Project>{6eb7269e-fca2-4773-9711-320bc86faf81}</Project>
       <Name>SSU.ADONET.Ex1.Cube</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SSU.ADONET.Ex2.Inheritance\SSU.ADONET.Ex2.Inheritance.csproj">
+      <Project>{99170a7f-d8ea-40f4-aff7-c4e2f600a4f5}</Project>
+      <Name>SSU.ADONET.Ex2.Inheritance</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
